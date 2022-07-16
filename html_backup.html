@@ -1,0 +1,139 @@
+<html lang="en">
+<head>
+<title>Chess</title>
+ <link rel="stylesheet" href="https://assets.codepen.io/1075762/chessboard-1.0.0.min.css">
+  <script src="https://assets.codepen.io/1075762/chessboard-1.0.0.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+
+</head>
+
+  <body>
+    <div class="main">
+          <div class="container">
+          
+        <div class="col-lg-6">       
+          
+          <pre id="outhtml"></pre>
+        </div>
+      </div>
+      <p><u id="back">>>__</u>progression # out of <span id="progressionlength"></span> .<select id="ProgressionChoice">
+            <option value disable selected>-</option>
+            <option value="1">1.</option>
+          <option value="2">2.</option>
+          <option value="3">3.</option>
+          <option value="4">4.</option>
+          <option value="5">5.</option>
+          <option value="6">6.</option>
+          <option value="7">7.</option>
+          <option value="8">8.</option>
+          <option value="9">9.</option>
+          <option value="10">10.</option>
+          <option value="11">11.</option>
+          
+          
+          
+          </select>_______<u><a href="https://codepen.io/Groundedelectron/pen/poLvGPM/022fd78ce8fdfb912d38c52c0bef7559?editors=1010" target="_blank">Pen_link</a></u></p>
+         
+                     
+         
+        <hr>
+        <table>
+   <tr><t>Selection_<select id="Selection">
+            <option value disable selected>-</option>
+            <option value="logical_chess">1. Logical Chess </option>
+            <option value="Alan">2. Alan's Games</option>
+            <option value="Alekhine">2. Alekhine </option>
+            <option value="Caro_Kahn">3. Caro Kahn </option>
+            <option value="Fianchetto">4. Fianchetto </option>
+            <option value="French">5. French </option>
+            <option value="Italian">6. Italian, Giuoco</option>
+            <option value="Kings_knight">7. Kings Knight </option>
+            <option value="Kings_fianchetto">8. Kings Fiancheto</option>
+            <option value="Kings_pawn">9. Kings pawn</option>
+            <option value="Birds_opening">10. Birds opening </option>
+            <option value="Nimzo_defense">11. Nimzo Defense </option>
+            <option value="Queens_pawn">12. Queens Pawn </option>
+            <option value="Agadmator">13. Agadmator</option>
+            <option value="English">14. English </option>
+            <option value="Philidor">15. Philidor</option>
+            <option value="Scandinavian">16. Scandinavian </option>
+            <option value="MateInThree">17. Mate in Three </option>
+            <option value="Lightsquares">18. Light Squares </option>
+     
+     
+            </select>&nbsp;Choice #_<select id="Choice">
+            <option value="1">1.</option>
+            <option value="1" selected>1. </option>
+            <option value="2">2. </option>
+            <option value="3">3. </option>
+            <option value="4">4. </option>
+            <option value="5">5. </option>
+            <option value="6">6. </option>
+            <option value="7">7. </option>
+            <option value="8">8. </option>
+            <option value="9">9. </option>
+            <option value="10">10.</option>
+            <option value="11">11.</option>
+     
+     
+            </select>
+    </tr>
+   <tr><td> <input type="text" id="text_chess" /> ( enter Fen here..  <span id="replace_number"></span> )</select>
+            </td></tr>
+   
+      </table>
+    <table></table>
+        <br>
+
+ <textarea id="myTextArea" rows="4" cols="44"></textarea>&nbsp;&nbsp;<textarea rows="4" cols="44">And the board can be controlled with a mouse!
+changing the Fen of this textarea box changes the table    
+    
+And, add the left arrow...
+    
+add adjustments of the caro_kahn
+  
+check out: Caro_kahn, Italian, Queens pawn, Sicilian, 
+  
+with the text entry at move board, what can you do?
+  
+enter the array.... 
+  
+and right above the chessboard will display something good
+  
+then have a dropdown menu for the array # to move
+ 
+and the FEN positions get printed at the bottom, so if you want to play a position against the computer go to chess.com/analysis
+
+use escape key to set the selected text into an array to run by move_board
+  
+up and down controls moves back and forth..
+  
+Fen positions... pretty incredible!!!
+  
+use @ to enter to the box that can change positions
+  
+    </textarea>
+            
+            
+            
+            <div class="container1"><table><tr><td>Which?<select id="WhiteOrBlack">
+            <option value="white">As White</option>
+            <option value="black">As Black</option>
+              </select><u id="flip_board_2">>>flip board?</u></t></tr><tr><td><input type="text" id="move_board_2"  /> <button onclick="restart_fen_0()"><u> Restart at move 1</u></button>
+              </td><td><input type="text" id="move_board"  /> (move #<span id="movenumber"></span>)</td></tr><tr><td><span id="moveboard_number"></span>...<span id="spacecounter"></span>..(<span id="spacecounter_2"><span>  ) <span id="currentmove"></span><span id="moveboard_recent"></span></td></tr><br><tr><td>...<span id="board_array">...</span></td></tr></table><div>
+              <div id="myBoard"></div><textarea  id="myTextAreaSummary" rows="10" cols="58"></textarea><input type="text" id="text_chess1" /></div>
+  </div>
+    <br><br>
+  <span id="fenposition_1">FEN position</span><br>fen_index: <span id="fen_array_index"></span>
+ <table id="my-table">
+    </table>
+    </div>
+
+
+</body>
+
+</html>
+
+
+
+
