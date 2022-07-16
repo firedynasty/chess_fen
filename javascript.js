@@ -3136,8 +3136,8 @@ selection_catch.addEventListener("change", function () {
   document.getElementById("text_chess").focus();
   selection_var = 0;
   determine_selection();
-  arr_again = arr.replace(/\n/g, " ");
-  text_val_split = arr_again.split(" ").join("");
+  //arr_again = arr.replace(/\n/g, " ");
+  text_val_split = arr.split(" ").join("");
   text_val_split = text_val_split.slice(0, -1);
   text_val_split = text_val_split.split(",");
   array_of_moves = text_val_split;
@@ -3168,6 +3168,16 @@ selection_catch.addEventListener("change", function () {
 
     console.log('split_results_6 is'+split_results_6)
     console.log(split_results_6)
+    fen_list_for_text_chess_1 = []
+
+    for (var j = 0; j < split_results_6.length; j++) {
+        console.log('looping..'+split_results_6[j])
+        //fen_list_for_text_chess_1.push(parseInt(split_results_6[j]) - 1)
+        fen_list_for_text_chess_1.push(fen_list_retrieve_list[parseInt(split_results_6[j]-1)])
+    }
+    //marker
+    console.log('fen_list_for_text_chess_1'+fen_list_for_text_chess_1)
+    console.log(fen_list_for_text_chess_1)
     if(Number.isInteger(parseInt(split_results_5[0]))) {
         console.log('is a number')
          number_of_at = parseInt(split_results_5) - 1
@@ -4116,48 +4126,39 @@ number_val = parseInt(text_val);
 number_val_comp = number_val - 1;
 arr = logical_chess_list[0];
 
-
 $("#text_chess1").keypress(function (e) {
   if (e.which == 13) {
         text_val = $("#text_chess1").val();
-        if (text_val.includes("/")) {
-          console.log('should be a FEN')
-          text_val_is_1 = text_val.split(" ")
-          var config = {
-      //Spanish Opening
-            position: text_val_is_1[0],
-            pieceTheme:
-        "https://nothingtoseeheredude.netlify.app/img/chesspieces/wikipedia/{piece}.png",
-            draggable: true,
-            dropOffBoard: "snapback",
-            onDrop: onDrop
-        };
-            board = Chessboard("myBoard", config);
-            entered_fen = text_val_is_1
-        } else {
-          text_val_is_1 = text_val.split("");
+        text_val_is_1 = text_val.split("");
           first_char_0_1 = parseInt(text_val_is_1[0]);
           if (Number.isInteger(first_char_0_1)) {
-            number_of_text_c = parseInt(text_val) -1           
+            console.log('a number')
+            text_val_split = fen_list_retrieve[fen_list_for_text_chess_1[parseInt(text_val) - 1]].split(' ').join('')
+            console.log(text_val_split)
+            text_val_split = text_val_split.split(",");
+            short_array_of_moves = text_val_split;
+            short_array_of_moves = short_array_of_moves.filter(Boolean);
+            console.log(short_array_of_moves);
+            document.getElementById("board_array").innerHTML = short_array_of_moves;
+            move_board_counter_ = -1;
             var config = {
       //Spanish Opening
-                position: fen_list[number_of_text_c],
-                pieceTheme:
+              position: fen_list_for_text_chess_1[parseInt(text_val) - 1],
+              pieceTheme:
         "https://nothingtoseeheredude.netlify.app/img/chesspieces/wikipedia/{piece}.png",
-                draggable: true,
-                dropOffBoard: "snapback",
-                onDrop: onDrop
+              draggable: true,
+              dropOffBoard: "snapback",
+              onDrop: onDrop
         };
-            board = Chessboard("myBoard", config);
-            entered_fen = fen_list[number_of_text_c]
-        }
-        }
-        document.getElementById("text_chess_1").value = ""
+           board = Chessboard("myBoard", config);
+           entered_fen = fen_list_for_text_chess_1[parseInt(text_val) - 1]
+          }
+  
+        document.getElementById("text_chess1").value = ""
         
 
   }
 });
-
 entered_fen  = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR'
 
 
@@ -4239,5 +4240,13 @@ fen_list_retrieve = {
   'r3kbnr/ppp1q1pp/2np4/4p3/2B1P1b1/2P2N2/PP1N1PPP/R1BQK2R' : 'c4-g8,h8-g8,d1-b3,',
   '2kr1bnr/1pp3pp/3pq3/n3p1N1/P3P3/2P4P/3N1PP1/R1BQK2R' : 'e6-f6,d2-b3,a5-c6,a4-a5,h7-h6,g5-f3,g7-g5,a5-a6,b7-b6,c1-e3,c8-b8,b3-d2,f6-e6,d1-a4,d6-d5,e4-d5,d8-d5,a4-b3,',
 }
+
+
+fen_list_retrieve_list = []
+
+for (const [key,value] of Object.entries(fen_list_retrieve)) {
+    fen_list_retrieve_list.push(key)    
+}
+
 
 
